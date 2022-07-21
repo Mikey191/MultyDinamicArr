@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void fillArray(int* const arr, const int size) { //для чего const? для страховки от ненужных изменений параментров передаваемых в саму функцию
+	for (int i = 0;  i < size;  i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+
+
+void showArray(const int* const arr, const int size) {//первый const показывает что ничего эта функция не меняет
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "t";
+	}
+}
+
+int main() {
+
+	return 0;
+}

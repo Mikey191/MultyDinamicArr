@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+//как скопировать динамический массив в с++
+
+
+void fillArray(int* const arr, const int size) { //для чего const? для страховки от ненужных изменений параментров передаваемых в саму функцию
+	for (int i = 0;  i < size;  i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+
+void showArray(const int* const arr, const int size) {//первый const показывает что ничего эта функция не меняет
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+}
+
+int main() {
+
+	int size = 10;
+	int* firstArray = new int[size];
+	int* secondArray = new int[size];
+
+	fillArray(firstArray, size);
+	fillArray(secondArray, size);
+
+	cout << "FirstArray = \t";
+	showArray(firstArray, size);
+	cout << "SecondArray = \t";
+	showArray(secondArray, size);
+
+	//правильное копирование одного массива в другой
+	delete[] firstArray;
+
+	firstArray = new int[size];
+
+	for (size_t i = 0; i < size; i++)
+	{
+		firstArray[i] = secondArray[i];
+	}
+
+	//firstArray = secondArray;//неправильное копирование массива
+
+	cout << "============================================" << endl;
+	cout << "FirstArray = \t";
+	showArray(firstArray, size);
+	cout << "SecondArray = \t";
+	showArray(secondArray, size);
+
+	delete[] firstArray;
+	delete[] secondArray;
+
+	return 0;
+}

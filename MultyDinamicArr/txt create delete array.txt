@@ -1,0 +1,68 @@
+//создание двумерного динамического массива
+#include <iostream>
+using namespace std;
+
+int main() {
+	int i, j;
+	int m1 = 5, m2 = 5;
+
+
+	//объявление двумерного динамического массива
+	int** pArr = new int* [m1];
+
+	for (i = 0; i < m1; i++)
+	{
+		pArr[i] = new int[m2];
+	}
+
+	pArr[3][3] = 100;
+	cout << pArr[3][3] << endl;
+
+	//удаление двумерного динамического массива
+	for (i = 0; i < m1; i++)
+	{
+		delete[] pArr[i];
+	}
+	delete[] pArr;
+
+	return 0;
+}
+===
+//создание и заполнене двумерного динамического массива
+#include <iostream>
+using namespace std;
+
+int main() {
+	int i, j;
+	int m1, m2;
+	cout << "How many ROWS: ";//сколько строк
+	cin >> m1;
+	
+	//объявление двумерного динамического массива
+	int** pArr = new int* [m1];
+
+	for (i = 0; i < m1; i++)
+	{
+		cout << "How many cells in the row " << i << "?" << endl;
+		cin >> m2;
+		pArr[i] = new int[m2];
+
+		for (j = 0; j < m2; j++)
+		{
+			pArr[i][j] = i * j;
+			cout << pArr[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+
+	//удаление двумерного динамического массива
+	for (i = 0; i < m1; i++)
+	{
+		delete[] pArr[i];
+	}
+	delete[] pArr;
+
+	return 0;
+}
+===
